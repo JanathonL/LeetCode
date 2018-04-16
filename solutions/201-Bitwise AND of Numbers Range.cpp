@@ -13,16 +13,3 @@
 // 11110
 // 最后的结果是11000，果然是公共左边首部。
 // 发现了规律后，这题就简单了，我们只需要写代码找到公共左边首部即可。
-
-class Solution {
-public:
-    int rangeBitwiseAnd(int m, int n) {
-        int cnt=0;
-        while(n>m){
-            cnt++;
-            m=(m>>1);
-            n=(n>>1);
-        }
-        return m<<cnt;
-    }
-};
