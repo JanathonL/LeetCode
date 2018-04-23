@@ -1,2 +1,2 @@
 # LeetCode
-My leetcode solutions with explanation
+My leetcode solutions with detailed Chinese explanation
