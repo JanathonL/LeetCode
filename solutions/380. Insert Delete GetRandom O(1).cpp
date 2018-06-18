@@ -5,6 +5,14 @@
 // stack里面存的是当前被删除的节点index
 
 // insert：判断一下m1是否找得到val，如果不存在那就去看看stack是否为空，不为空就pop一个插入即可，如果为空就cnt++，然后index=cnt
+
+
+// 一个巧妙的方法：
+// 使用一个map+vector
+// map[data] = index
+
+// remove:  如果存在，先取出vector最后一个元素last，更新map[last] = map[val],  nums[map[val]] = last.  最后 nums.pop_back(),  map.erase(val)
+
 class RandomizedSet {
 public:
     /** Initialize your data structure here. */
