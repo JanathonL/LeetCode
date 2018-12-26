@@ -1,0 +1,24 @@
+233. Number of Digit One
+class Solution {
+public:
+    int countDigitOne(int n) {
+        long cur,highn,lown,factor;
+        factor=1;
+        cur=n%factor;
+        long res=0;
+        while(n/factor>0){
+            cur = n/factor%10;
+            highn = n/factor/10;
+            lown = n%factor;
+            if(cur==0) res+=highn*factor;
+            else if(cur==1) res+=highn*factor+lown+1;
+            else {
+                res+= (highn+1)*factor;
+            }
+            factor*=10;
+        }
+        return res;
+        
+        
+    }
+};
