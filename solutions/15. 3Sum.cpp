@@ -1,11 +1,13 @@
+// refined
+// beat 94.00%
+// time: O(N^2)
+// space: O(1)
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
         
         vector<vector<int>> res;
-        int ptr1 = 0;
-        int low = 0;
-        int high = 0;
+        int ptr1 = 0, low = 0, high = 0;
         sort(nums.begin(), nums.end());
         for(int i=0;i<nums.size();i++){
             if(i>0 && nums[i]==nums[i-1]) continue;

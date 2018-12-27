@@ -7,12 +7,12 @@ public:
         int result = 0;
         while(start<end){
             result = max(result, min(height[start],height[end])*(end-start));
-            if(height[start]<=height[end]){
+            if(height[start]<=height[end]) {
                 start++;
-            }
-            else{
+            } else {
                 end--;
             }
+            
         }
         return result;
     }

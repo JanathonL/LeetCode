@@ -1,50 +1,29 @@
 5. Longest Palindromic Substring
+// beat 28.29%
+// time: O(n^2)
+// space: O(n^2)
 class Solution {
 public:
     string longestPalindrome(string s) {
-        int n = s.size();
-        int max_length = -1;
-        string ans = "";
-        for(int i=0;i<n;i++){
-            //odd
-            int length = 0;
-            // string tmp = "";
-            int j = 0;
-            for(j = 0;i-j>=0&&i+j<n;j++){
-                if(s[i-j]==s[i+j]){
-                    length++;
+        if(s.size()==0) return "";
+        vector<vector<bool>> dp(s.size(),vector<bool>(s.size(),false));
+        int maxLen = 0;
+        int begin;
+        for(int i=s.size()-1;i>=0;i--){
+            for(int j=i;j<s.size();j++){
+                if(j==i) {
+                    dp[i][j] = true;
+                } else {
+                    dp[i][j] =  s[i]==s[j] && (j==i+1||dp[i+1][j-1]) ;
                 }
-                else{
-                    break;
-                }
-            }
-            length = 2*j-1;
-            if(length>max_length){
-                // cout<<"odd:"<<length<<endl;
-                // length ++;
-                max_length=2*j-1;
-                ans=s.substr(i-j+1,2*j-1);
-            }
-            //even
-            length=0;
-            // tmp=""
-            for(j = 0;i-j>=0&&i+1+j<n&&i+1<n;j++){
-                if(s[i-j]==s[i+1+j]){
-                    length++;
-                    // cout<<"s[i-j]:"<<s[i-j]<<" s[i+1+j]:"<<s[i+1+j]<<endl;
-                }
-                else{
-                    break;
+                if(dp[i][j]&&(j-i+1)>maxLen){
+                    maxLen = j-i+1;
+                    begin = i;
                 }
             }
-            length = 2*j;
-            if(length>max_length){
-                // cout<<"even:"<<length<<endl;
-                max_length=2*j;
-                ans=s.substr(i-j+1,2*j);
-            }
-            
-        }
-        return ans;
+        }                   
+        return s.substr(begin, maxLen);
     }
 };
+
+// 马拉车算法待命 Manacher's algorithm

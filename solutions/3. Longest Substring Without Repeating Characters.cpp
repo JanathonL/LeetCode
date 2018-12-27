@@ -20,14 +20,16 @@ end = 7;
 max_len = 3
 seen:     b
 */
+
+// beat 82.58%
+// time: O(N)
+// space: O(N)
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         // check empty
         if(s=="") return 0;
-        int start = 0;
-        int end = 0;
-        int max_len = INT_MIN;
+        int start = 0, end = 0, max_len = INT_MIN;
         unordered_set<char> seen;
         while(end<s.size()){
             if(seen.count(s[end])){
@@ -35,7 +37,7 @@ public:
                     seen.erase(s[start]);
                     start++;
                 }
-                seen.erase(s[start]);
+                seen.erase(s[start]);  // remove the last char
                 start++;
             }
             // add the str[end] to hash set
