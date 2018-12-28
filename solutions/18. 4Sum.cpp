@@ -1,4 +1,8 @@
 18. 4Sum
+// refined
+// beat 38%
+// time: O(N^3)
+// space: O(1)
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {

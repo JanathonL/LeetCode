@@ -1,4 +1,7 @@
 22. Generate Parentheses
+// beat 35.16% (100% actually)
+// time: O((4^n)/sqrt(n))
+// space: O((4^n)/sqrt(n))
 class Solution {
 public:
     vector<string> generateParenthesis(int n) {

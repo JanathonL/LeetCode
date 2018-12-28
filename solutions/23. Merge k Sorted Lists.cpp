@@ -7,6 +7,10 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+// refined
+// divide and conquer
+// time: O(Nlogk)
+// space: O(1)
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
@@ -49,6 +53,54 @@ public:
             }
         }
         pre->next = l1? l1:l2;
+        return dummy.next;
+    }
+};
+
+// solution 2: priority_queue
+// refined
+// beat 57%
+// time: O(Nlogk)
+// space: O(k)
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    class Comparator{
+    public:
+        bool operator()(ListNode* a, ListNode* b){
+            return a->val > b->val;
+        }
+    };
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        int size = lists.size();
+        if(size == 0){
+            return NULL;
+        }
+        priority_queue<ListNode*,vector<ListNode*>, Comparator> pq;
+        for(auto node:lists){
+            if(node!=NULL){
+                pq.push(node);
+            }
+            
+        }
+        ListNode dummy(-1);
+        ListNode* cur_ptr = &dummy;
+        while(!pq.empty()){
+            auto cur = pq.top();
+            pq.pop();
+            cur_ptr->next = cur;
+            cur_ptr = cur_ptr->next;
+            if(cur->next){
+                pq.push(cur->next);
+            }
+        }
         return dummy.next;
     }
 };
