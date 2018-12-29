@@ -28,8 +28,6 @@ public:
             cnt_tmp = 1;
             head2= reverseK(head2,k);
             cnt -= k;
-            // cout<<"cnt:"<<cnt<<endl;
-            // printNode(head);
         }
         
         return dummy.next;
@@ -55,14 +53,11 @@ public:
             pre->next = cur;
             cur = tmp;
             cnt++;
-            // cout<<cnt<<endl;
         }
-        // printNode(head);
         ListNode* tmp = cur->next;
         cur->next = pre->next;
         pre->next = cur;
         head2->next = tmp;
-        // printNode(head);
         return head2;
     }
 };
