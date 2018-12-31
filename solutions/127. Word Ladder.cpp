@@ -31,6 +31,8 @@
 // Output: 0
 
 // Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
+// refined
+// beat 45%
 class Solution {
 public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
@@ -57,6 +59,38 @@ public:
         }
         
         return 0;
+    }
+    void addNext(string beginWord, unordered_set<string>& dict, queue<string>& toVisit){
+        // cout<<"begin:"<<beginWord<<endl;
+        vector<string> del;
+        for(string word:dict){
+            // cout<<"test:"<<word<<endl;
+            if(oneedit(beginWord, word)){
+                toVisit.push(word);
+                del.push_back(word);
+                // cout<<word<<" ";
+            }
+        }
+        for(string str:del){
+            dict.erase(str);
+        }
+        // cout<<endl;
+        
+    }
+    bool oneedit(string first, string second){
+        if(first.size()!=second.size()){
+            return false;
+        }
+        int cnt = 0;
+        for(int i=0;i<first.size();i++){
+            if(first[i]!=second[i]){
+                cnt++;
+                if(cnt>1){
+                    return false;
+                }
+            }
+        }
+        return cnt==1;
     }
     void addNext(string beginWord, unordered_set<string>& dict, queue<string>& toVisit){
 

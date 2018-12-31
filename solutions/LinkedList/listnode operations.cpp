@@ -7,6 +7,7 @@ trick 2:
 slow and fast pointers
 * find the middle of list
 * find kth node from the end
+* check circle
 
 operations:
 reverse:

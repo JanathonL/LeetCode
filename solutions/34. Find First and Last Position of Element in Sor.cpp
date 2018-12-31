@@ -55,3 +55,52 @@ public:
         }
     }
 };
+
+// refined
+// beat 100%
+// time: O(logn)
+// space: O(1)
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int lo = findSmall(nums, target);
+        int hi = findLarge(nums, target);
+        lo += 1;
+        hi -= 1;
+        if(lo>hi) return {-1,-1};
+        else return {lo,hi};
+    }
+    int findSmall(vector<int> nums, int target){
+        int lo=0, hi=nums.size()-1;
+        while(lo<hi){
+            int mid = lo + (hi-lo+1)/2;
+            if(nums[mid]>=target){
+                hi = mid - 1;
+            } else {
+                lo = mid;
+            }
+        }
+        if(lo<nums.size() && nums[lo]==target){
+            return lo-1;
+        } else {
+            return lo;
+        }
+    }
+    int findLarge(vector<int> nums, int target){
+        int lo=0, hi=nums.size()-1;
+        while(lo<hi){
+            int mid = lo + (hi-lo)/2;
+            if(nums[mid]<=target){
+                lo = mid+1;
+            } else {
+                hi = mid;
+            }
+        }
+        if(hi>=0 && nums[hi]==target){
+            return hi+1;
+        } else {
+            return hi;
+        }
+    }
+    
+};

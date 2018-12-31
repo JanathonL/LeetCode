@@ -7,6 +7,10 @@
 // Each of the digits 1-9 must occur exactly once in each column.
 // Each of the the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.
 // Empty cells are indicated by the character '.'.
+// refined
+// beat 89.48%
+// time: O(1)
+// space: O(1)
 class Solution {
 public:
     int used1[9][9] = {0}, used2[9][9] = {0}, used3[9][9] = {0};

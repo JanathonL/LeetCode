@@ -1,28 +1,27 @@
+// refined 
+// time: O(N)
+// space: O(N)
 class Solution {
 public:
     int longestValidParentheses(string s) {
-        stack<int> lefts;
-        int maxlen = 0;
-        int last = -1;
-        for(int i =0;i<s.size();i++){
+        stack<int> left;
+        int res = 0, last = -1;
+        for(int i=0;i<s.size();i++){
             if(s[i]=='('){
-                lefts.push(i);
-            }
-            else{
-                if(lefts.empty()){
+                left.push(i);
+            } else {
+                if(!left.empty()){
+                    left.pop();
+                    if(!left.empty()){
+                        res = max(res, i-left.top());
+                    } else {
+                        res = max(res, i-last);
+                    }
+                } else {
                     last = i;
-                }
-                else{
-                    lefts.pop();
-                    if(lefts.empty()){
-                       maxlen = max(maxlen,i-last); 
-                    }
-                    else{
-                        maxlen = max(maxlen,i-lefts.top());
-                    }
                 }
             }
         }
-        return maxlen;
+        return res;
     }
 };

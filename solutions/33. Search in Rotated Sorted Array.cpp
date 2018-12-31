@@ -10,6 +10,7 @@ bug free
 time: O(logn)
 space: O(1)
 */
+// refined
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
