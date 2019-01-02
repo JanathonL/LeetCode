@@ -4,6 +4,8 @@ find left highest
 find right highest
 max(0, min(left[i], right[i])-height[i])
 
+refined
+beats: 14.87%
 4 min
 bug free!!
 time: O(N)

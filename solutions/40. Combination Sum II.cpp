@@ -30,3 +30,41 @@ public:
         }
     }
 };
+
+
+// refined
+// 45.37%
+class Solution {
+public:
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        if(candidates.size()==0) return vector<vector<int>>();
+        vector<vector<int>> res;
+        vector<bool> visited(candidates.size(),false);
+        sort(candidates.begin(), candidates.end());
+        backtrack(candidates, target, res, visited, 0, vector<int>());
+        return res;
+    }
+    void backtrack(vector<int> candidates, int target, vector<vector<int>> &res,
+                   vector<bool> visited, int start, vector<int> cur){
+        if(target==0){
+            res.push_back(cur);
+            return;
+        }
+        for(int i=start;i<candidates.size();i++){
+            if(i>0&&candidates[i-1]==candidates[i]&&!visited[i-1]){  // remove duplicate
+                // cout<<i<<endl;
+                continue;
+            }
+            if(target>=candidates[i]){
+                visited[i] = true;
+                cur.push_back(candidates[i]);
+                backtrack(candidates, target-candidates[i], res, visited, i+1, cur);
+                visited[i] = false;
+                cur.pop_back();
+            } else {
+                break;
+            }
+        }
+    }
+    
+};

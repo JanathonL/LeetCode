@@ -90,3 +90,41 @@ public:
         return ans;
     }
 };
+
+
+// refined
+// beat: 69.90%
+// time: O(nm)
+// space: O(n+m)
+class Solution {
+public:
+    string multiply(string num1, string num2) {
+        if(num1.size()==0 || num2.size()==0){
+            return "0";
+        }
+        vector<int> temp(num1.size()+num2.size(),0);
+        for(int i=0;i<num1.size();i++){
+            for(int j=0;j<num2.size();j++){
+                temp[i+j+1] += (num1[i]-'0')*(num2[j]-'0');
+            }
+        }
+        int carry = 0;
+        for(int i=temp.size()-1;i>=0;i--){
+            temp[i] += carry;
+            carry = temp[i]/10;
+            temp[i] = temp[i]%10;
+        }
+        if(carry){
+            temp[0] = carry;
+        }
+        int i = 0;
+        for(i=0;i<temp.size();i++){
+            if(temp[i]!=0||i==temp.size()-1) break;
+        }
+        string res;
+        for(;i<temp.size();i++){
+            res += temp[i]+'0';
+        }
+        return res;
+    }
+};

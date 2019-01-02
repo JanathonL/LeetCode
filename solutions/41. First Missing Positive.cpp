@@ -26,6 +26,10 @@ Your algorithm should run in O(n) time and uses constant extra space.
 // When we find 5, then swap it with A[4].
 
 // At last, the first place where its number is not right, return the place + 1.
+
+// refined
+// beat 70 %
+// time: O(N) and space: O(1)
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
@@ -40,5 +44,41 @@ public:
             }
         }
         return nums.size()+1;
+    }
+};
+
+// refined beat 12%
+// two passes
+// time: O(N) and space: O(1)
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& nums) {
+        if(nums.size()==0) {
+            return 1;
+        }
+        int k = partition(nums);
+        int first_ms = k;
+        for(int i=0;i<k;i++){
+            int temp = abs(nums[i])-1;
+            if(temp<k){
+                nums[temp] = nums[temp]>0? -nums[temp]:nums[temp];
+            }
+        }
+        for(int i=0;i<k;i++){
+            if(nums[i]>0){
+                first_ms = i;
+                break;
+            }
+        }
+        return first_ms+1;
+    }
+    int partition(vector<int> &nums){
+        int cnt = 0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]>0){
+                swap(nums[cnt++],nums[i]);
+            }
+        }
+        return cnt;
     }
 };
