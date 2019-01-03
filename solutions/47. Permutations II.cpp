@@ -44,3 +44,37 @@ public:
         }
     }
 };
+
+
+// refined
+// beat 46.08%
+// time: O(n!)
+// space: O(n)
+class Solution {
+public:
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        vector<vector<int>> res;
+        vector<int> cur;
+        if(nums.size()==0) return res;
+        vector<bool> visited(nums.size(),false);
+        sort(nums.begin(), nums.end());
+        dfs(nums, res, cur, visited);
+        return res;
+    }
+    void dfs(vector<int> nums, vector<vector<int>>& res, vector<int> cur, vector<bool> visited){
+        if(cur.size()==nums.size()){
+            res.push_back(cur);
+            return;
+        }
+        for(int i=0;i<nums.size();i++){
+            if(i>0&& nums[i-1]==nums[i] && !visited[i-1]) continue;
+            if(visited[i]) continue;
+            cur.push_back(nums[i]);
+            visited[i] = true;
+            dfs(nums,res,cur,visited);
+            visited[i] = false;
+            cur.pop_back();
+        }
+    }
+};
+

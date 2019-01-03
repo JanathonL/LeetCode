@@ -13,6 +13,9 @@
 //   [3,1,2],
 //   [3,2,1]
 // ]
+// refined: 57%
+// time: n!
+// space: O(n)
 class Solution {
 public:
     vector<vector<int>> permute(vector<int>& nums) {

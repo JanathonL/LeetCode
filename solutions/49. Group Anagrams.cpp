@@ -3,10 +3,13 @@
 hash map <sorted string, vector<string>>
 bug free!!
 5 min
-time: O(N*klogk)  k is the len of string
 
 
 */
+// refined
+// beat 67%
+// time: O(N*klogk)  k is the len of string
+// space: O(NK)
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
