@@ -1,4 +1,8 @@
 64. Minimum Path Sum
+// refined
+// beats 23%
+// time:O(n*m)
+// space: O(n*m)
 class Solution {
 public:
     int minPathSum(vector<vector<int>>& grid) {

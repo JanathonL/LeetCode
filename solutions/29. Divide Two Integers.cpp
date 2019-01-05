@@ -5,36 +5,36 @@ time 11min
 time: (log n)^2
 space: 1
 */
-// class Solution {
-// public:
-//     int divide(int dividend, int divisor) {
-//         int res = 0;
-//         int mul = 1;
-//         int sign = 1;
-//         if(dividend == 0) return 0;
-//         if(dividend<0&&divisor>0 || dividend>0&&divisor<0){
-//             sign = -1;
-//         }
-//         unsigned divid = dividend>0? dividend:-dividend;
-//         unsigned dis = divisor>0? divisor:-divisor;
-//         unsigned mask = 1<<31;
-//         while(divid>=dis){
-//             unsigned old = dis;
-//             while(!(dis&mask) && divid>dis<<1){
-//                 dis = dis<<1;
-//                 mul = mul<<1;
-//             }
-//             divid -= dis;
-//             res += mul;
-//             mul = 1;
-//             dis = old;
-//         }
-//         if(res==INT_MIN){
-//             return sign==1? INT_MAX:INT_MIN; 
-//         }
-//         return res*sign;
-//     }
-// };
+class Solution {
+public:
+    int divide(int dividend, int divisor) {
+        int res = 0;
+        int mul = 1;
+        int sign = 1;
+        if(dividend == 0) return 0;
+        if(dividend<0&&divisor>0 || dividend>0&&divisor<0){
+            sign = -1;
+        }
+        unsigned divid = dividend>0? dividend:-dividend;
+        unsigned dis = divisor>0? divisor:-divisor;
+        unsigned mask = 1<<31;
+        while(divid>=dis){
+            unsigned old = dis;
+            while(!(dis&mask) && divid>dis<<1){
+                dis = dis<<1;
+                mul = mul<<1;
+            }
+            divid -= dis;
+            res += mul;
+            mul = 1;
+            dis = old;
+        }
+        if(res==INT_MIN){
+            return sign==1? INT_MAX:INT_MIN; 
+        }
+        return res*sign;
+    }
+};
 class Solution {
 public:
     int divide(int dividend, int divisor) {

@@ -16,8 +16,36 @@ public:
         }
         return f[n-1];
     }
-    
+};
 
+// refined
+// beat 55.74%
+// time: O(m*n)
+// space: O(m*n)
+class Solution {
+public:
+    int uniquePathsWithObstacles(vector<vector<int>>& grids) {
+        int m = grids.size();
+        if(m==0) return 0;
+        int n = grids[0].size();
+        if(n == 0) return 0;
+        vector<vector<int>> dp(m, vector<int>(n, 0));
+        if(grids[0][0]==1||grids[m-1][n-1]==1) return 0;
+        dp[0][0] = 1;
+        for(int i=1;i<m;i++){
+            dp[i][0]=dp[i-1][0]&&(!grids[i][0]);
+        }
+        for(int j=1;j<n;j++){
+            dp[0][j]=dp[0][j-1]&&(!grids[0][j]);
+        }
+        for(int i=1;i<m;i++){
+            for(int j=1;j<n;j++){
+                if(grids[i][j]==1) continue;
+                dp[i][j] = dp[i][j-1] + dp[i-1][j];
+            }
+        }
+        return dp[m-1][n-1];
+    }
 };
 // // Unique Paths II
 // // 深搜 + 缓存，即备忘录法

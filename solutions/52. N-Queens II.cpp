@@ -1,4 +1,8 @@
 52. N-Queens II
+// refined
+// beat 63.54%
+// time:O(N^N)
+// space: O(N)
 class Solution {
 public:
     int totalNQueens(int n) {

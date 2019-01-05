@@ -1,72 +1,31 @@
-60. Permutation Sequence
+// refined 
+// beat 28.36%
+// time: O(N^2)
+// space: O(N)
 class Solution {
 public:
     string getPermutation(int n, int k) {
-        int fraction[] = {1,1,2,6,24,120,720,5040,40320,362880};
-        string init = "";
-        if(k<=fraction[n-1]){
-            for(int i = 1;i<=n;i++){
-                init += i+'0';
-            }
-            for(int i = 0;i<k-1;i++){
-                init = nextPermutation(init);
-            }
-            return init;
-        }
-        else{
-            int first = k/fraction[n-1];
-            int cnt = k%fraction[n-1];
-            // cout<<first<<" "<<cnt<<endl;
-            if(cnt != 0){
-                first += 1;
-            }
-            else{
-                cnt = fraction[n-1];
-            }
-            init += first+'0';
-            for(int  i = 1;i<=n;i++){
-                if(i==first){
-                    continue;
-                }
-                else{
-                    init += i+'0';
-                }
-            }
-            for(int i =0;i<cnt-1;i++){
-                init = nextPermutation(init);
-            }
-            return init;
-        }
-    }
-    string nextPermutation(string str){
-        // cout<<str<<endl;
-        int size = str.length();
-        int index_low = -1;
-        for(int i=size-2;i>=0;i--){
-            // cout<<i<<" str[i]:"<<str[i]<<" str[i+1]:"<<str[i+1]<<endl;
-            if(str[i]<str[i+1]){
-                index_low = i;
-                break;
-            }
-        }
-        // cout<<index_low<<" "<<str[index_low]<<endl;
+        // initialize a dictionary that stores 1, 2, ..., n. This string will store the permutation.
+        string dict(n, 0);
+        iota(dict.begin(), dict.end(), '1');
         
-        int index_high = -1;
-        for(int i=size-1;i>=0;i--){
-            if(str[i]>str[index_low]){
-                index_high = i;
-                // cout<<str[index_high]<<endl;
-                char temp;
-                temp = str[index_high];
-                str[index_high] = str[index_low];
-                str[index_low] = temp;
-                reverse(str.begin()+index_low+1,str.end());
-
-                break;
-            }
+        // build up a look-up table, which stores (n-1)!, (n-2)!, ..., 1!, 0!
+        vector<int> fract(n, 1);
+        for (int idx = n - 3; idx >= 0; --idx) {
+            fract[idx] = fract[idx + 1] * (n - 1 - idx);
         }
-        return str;
         
+        // let k be zero base
+        --k;
         
+        // the main part.
+        string ret(n, 0);
+        for (int idx = 0; idx < n; ++idx) {
+            int select = k / fract[idx];
+            k %= fract[idx];
+            ret[idx] = dict[select];
+            dict.erase(next(dict.begin(), select)); // note that it is an O(n) operation
+        }
+        return ret;
     }
 };

@@ -19,6 +19,7 @@ return seen_num && seen_num_after e
 time: O(N)
 space: O(1)
 */
+// refined
 class Solution {
 public:
     void trim(string& str){

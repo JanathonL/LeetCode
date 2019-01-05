@@ -13,6 +13,7 @@ else
 time: logn
 space: O(logn)  // stack recursive
 */
+// refined
 class Solution {
 public:
     double myPow(double x, int n) {
@@ -38,5 +39,4 @@ public:
             return res*res*x;
         }
     }
-    
 };

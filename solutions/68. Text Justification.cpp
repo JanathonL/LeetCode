@@ -17,7 +17,8 @@ cannot finish
 time: O(N)
 space: O(1)
 */
-
+// refined
+// beat 100%
 class Solution {
 public:
     vector<string> fullJustify(vector<string>& words, int maxWidth) {

@@ -9,6 +9,31 @@ public:
         return reach>=nums.size()? true:false;
     }
 };
+
+// refined:
+// beat 64.45%
+// time: O(N)
+// space: O(1)
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        if(nums.size()==0) return true;
+        int left = 0;
+        int right = 0;
+        while(left<=right){
+            int oldright = right;
+            for(int i=left;i<=oldright;i++){
+                right = max(right, i+nums[i]);
+                if(right>=nums.size()-1){
+                    return true;
+                }
+            }
+            left = oldright+1;
+        }
+        return false;
+    }
+};
+
 // class Solution {
 // public:
 //     bool canJump(vector<int>& nums) {

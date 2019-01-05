@@ -9,6 +9,10 @@ bug free
 time: O(m*n)
 space: O(n*m)
 */
+// refined
+// beat 100%
+// time: O(m*n)
+// space: O(n*m)
 class Solution {
 public:
     int uniquePaths(int m, int n) {
@@ -27,3 +31,4 @@ public:
         return dp[m-1][n-1];
     }
 };
+

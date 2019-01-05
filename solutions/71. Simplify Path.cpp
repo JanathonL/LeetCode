@@ -50,3 +50,43 @@ public:
         return ans;
     }
 };
+
+// refined
+// using deque
+// beats 78%
+// time: O(N)
+// space: O(N)
+class Solution {
+public:
+    string simplifyPath(string path) {
+        deque<string> s;
+        string tmp = "";
+        for(int i =0;i<path.size();i++){
+            if(path[i]!='/'){
+                tmp+=path[i];
+            }
+            else{
+                if(tmp==".."&&!s.empty()){
+                    s.pop_back();
+                } else if(tmp!="."&&tmp!=""&&tmp!="..") {
+                    s.push_back(tmp);
+                }
+                tmp="";
+            }
+        }
+        if(tmp==".."&&!s.empty()){
+            s.pop_back();
+        } else if(tmp!=""&&tmp!="."&&tmp!="..") {
+            s.push_back(tmp);
+        }
+        string ans = "";
+        vector<string> test;
+        while(!s.empty()){
+            tmp=s.front();
+            s.pop_front();
+            ans+="/"+tmp;
+        }
+        if(ans.size()==0) ans = "/";
+        return ans;
+    }
+};

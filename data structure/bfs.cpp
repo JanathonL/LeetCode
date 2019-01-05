@@ -52,7 +52,7 @@ void bfs(State st)
 		}
 		
 	}
- return;
+	return;
 }
  
 int main()
