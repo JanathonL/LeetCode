@@ -83,33 +83,53 @@ public:
         return res;
     }
     
-    // vector<TreeNode*> generateTrees(int n) {
-    //     if(n==0) return vector<TreeNode*>();
-    //     return dfs(1,n);
-    // }
-//     vector<TreeNode*> dfs(int minv, int maxv){
-//         vector<TreeNode*> res;
-//         if(minv>maxv){
-//             res.push_back(NULL);
-//             return res;
-//         }
-//         for(int i=minv;i<=maxv;i++){
-//             vector<TreeNode*> leftSub = dfs(minv, i-1);
-//             vector<TreeNode*> rightSub = dfs(i+1, maxv);
-//             for(TreeNode* left: leftSub){
-//                 for(TreeNode* right: rightSub){
-//                     TreeNode* root = new TreeNode(i);
-//                     root->left = left;
-//                     root->right = right;
-//                     res.push_back(root);
-//                 }
-//             }
-//         }
-        
-        
-//         return res;
-        
-        
-//     }
     
+};
+
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+
+// refined
+
+class Solution {
+public:
+    vector<TreeNode *> generateTree(int from, int to)
+    {
+        vector<TreeNode *> ret;
+        if(to - from < 0) ret.push_back(NULL);
+        if(to - from == 0) ret.push_back(new TreeNode(from));
+        if(to - from > 0)
+        {
+            for(int i=from; i<=to; i++)
+            {
+                vector<TreeNode *> l = generateTree(from, i-1);
+                vector<TreeNode *> r = generateTree(i+1, to);
+
+                for(int j=0; j<l.size(); j++)
+                {
+                    for(int k=0; k<r.size(); k++)
+                    {
+                        TreeNode * h = new TreeNode (i);
+                        h->left = l[j];
+                        h->right = r[k];
+                        ret.push_back(h);
+                    }
+                }
+            }
+        }
+        return ret;
+    }
+
+    vector<TreeNode *> generateTrees(int n) {
+        if(n==0) return vector<TreeNode*>();
+        return generateTree(1, n);
+    }
 };

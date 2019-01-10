@@ -31,6 +31,9 @@
 
 // With the above explanation and formulas, here is the implementation in Java.
 
+// refined
+// time: O(n^2)
+// space: O(N)
 public int numTrees(int n) {
     int [] G = new int[n+1];
     G[0] = G[1] = 1;

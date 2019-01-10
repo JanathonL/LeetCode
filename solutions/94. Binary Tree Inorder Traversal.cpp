@@ -20,6 +20,7 @@ stack stk
 time: O(N)
 space: O(h)
 */
+// refined
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
