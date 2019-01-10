@@ -1,4 +1,6 @@
 77. Combinations
+// refined
+// time: O(N!)
 class Solution {
 public:
     vector<vector<int>> combine(int n, int k) {

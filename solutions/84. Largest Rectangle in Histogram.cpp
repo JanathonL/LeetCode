@@ -1,4 +1,8 @@
 84. Largest Rectangle in Histogram
+// refined
+// beat 24.1%
+// time: O(N)
+// space: O(N)
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {

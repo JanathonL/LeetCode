@@ -42,3 +42,38 @@ public:
         return dummy.next;
     }
 };
+
+
+// refined
+// beat 45%
+// time: O(log(N))
+// space: O(1)
+class Solution {
+public:
+    bool search(vector<int>& nums, int target) {
+        if(nums.size()==0) return false;
+        int lo = 0;
+        int hi = nums.size()-1;
+        while(lo<=hi){  // careful about equal  [0,1,2]
+            int mid = lo + (hi-lo)/2;
+            if(nums[mid]==target) return true;
+            if(nums[mid]>nums[hi]){
+                if(target<nums[mid]&&target>=nums[lo]){
+                    hi = mid - 1;
+                } else {
+                    lo = mid + 1;
+                }
+            } else if(nums[mid]<nums[hi]){
+                if(target>nums[mid]&&target<=nums[hi]){
+                    lo = mid + 1;
+                } else {
+                    hi = mid - 1;
+                }
+            } else {
+                hi--;
+            }
+        }
+        return false;
+    }
+};
+

@@ -18,3 +18,26 @@ public:
         return index;
     }
 };
+
+// refined
+// time: O(N)
+// space: O(1)
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int len = nums.size();
+        int cnt = 0;
+        for(int i=0;i<nums.size();i++){
+            if(cnt<2){
+                nums[cnt++] = nums[i];
+            } else {
+                if(nums[cnt-1]==nums[cnt-2]&&nums[cnt-1]==nums[i]){
+                    continue;
+                } else {
+                    nums[cnt++] = nums[i];
+                }
+            }
+        }
+        return cnt;
+    }
+};

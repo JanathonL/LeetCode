@@ -1,23 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c858956f-89dd-4952-b4c8-62fcf3e9e700" name="Default Changelist" comment="" />
+    <list default="true" id="c858956f-89dd-4952-b4c8-62fcf3e9e700" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/74. Search a 2D Matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/74. Search a 2D Matrix.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/75. Sort Colors.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/75. Sort Colors.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/76. Minimum Window Substring.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/76. Minimum Window Substring.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/77. Combinations.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/77. Combinations.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/78. Subsets.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/78. Subsets.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/79. Word Search.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/79. Word Search.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/80. Remove Duplicates from Sorted Array II.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/80. Remove Duplicates from Sorted Array II.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/82. Remove Duplicates from Sorted List II.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/82. Remove Duplicates from Sorted List II.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/84. Largest Rectangle in Histogram.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/84. Largest Rectangle in Histogram.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/86. Partition List.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/86. Partition List.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/87. Scramble String.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/87. Scramble String.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/89. Gray Code.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/89. Gray Code.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/90. Subsets II.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/90. Subsets II.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/91. Decode Ways.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/91. Decode Ways.cpp" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1905" />
-    <option name="y" value="80" />
-    <option name="width" value="1750" />
-    <option name="height" value="1100" />
+    <option name="x" value="451" />
+    <option name="y" value="23" />
+    <option name="width" value="1400" />
+    <option name="height" value="880" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="C:/Documents and Settings" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -34,15 +62,12 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1913" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20095949" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -50,10 +75,17 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
 </project>

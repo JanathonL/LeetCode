@@ -1,4 +1,10 @@
 89. Gray Code
+
+// REFINED
+// beat 89%
+// time: O(N^2)
+// space: O(1)
+// everytime, set the highest bit to 1, in reverse order
 class Solution {
 public:
     vector<int> grayCode(int n) {

@@ -22,7 +22,6 @@ public:
         path.pop_back();
         
     }
-
     
 };
 // class Solution {
@@ -58,3 +57,26 @@ public:
 //     vector<int> visit;
 //     vector<int> tmp;
 // };
+
+
+// refined
+// beat 100%
+// time: O(2^n)
+// space: O(n)
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> res;
+        vector<int> cur;
+        dfs(res, nums, cur, 0);
+        return res;
+    }
+    void dfs(vector<vector<int>> &res, vector<int>& nums, vector<int> cur, int start){
+        res.push_back(cur);
+        for(int i=start;i<nums.size();i++){
+            cur.push_back(nums[i]);
+            dfs(res, nums, cur, i+1);
+            cur.pop_back();
+        }
+    }
+};

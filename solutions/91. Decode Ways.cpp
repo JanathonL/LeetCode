@@ -1,8 +1,14 @@
 /*
+refined
+beat: 51%
 7 min
 1 wrong
 time: O(N)
 space: O(N)
+
+DP:
+dp[i] += dp[i-1] if s[i] != '0'
+dp[i] += dp[i-2] if s.substr(i-1, 2) >= "10" && <= "26"
 */
 class Solution {
 public:

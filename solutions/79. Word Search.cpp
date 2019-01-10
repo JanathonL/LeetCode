@@ -50,3 +50,44 @@ public:
         }
     }
 };
+
+// refined
+// beat 18.9%
+// time: O(n*m*(n*m))
+// space: O(1)
+class Solution {
+public:
+    bool exist(vector<vector<char>>& board, string word) {
+        if(word=="") return true;
+        for(int i=0;i<board.size();i++){
+            for(int j=0;j<board[0].size();j++){
+                if(word[0]==board[i][j]){
+                    
+                    if(backtrack(board,word,i,j,1)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    bool backtrack(vector<vector<char>> &board, string word, int row, int col, int ind){
+        char old = board[row][col];
+        board[row][col] = '.';        
+        if(ind==word.size()){
+            return true;
+        }
+        vector<vector<int>> dirs = {{0,1},{0,-1},{1,0},{-1,0}};
+        for(vector<int> dir:dirs){
+            int x = row + dir[0];
+            int y = col + dir[1];
+            if(x>=0&&x<board.size() && y>=0 && y<board[0].size() && board[x][y]==word[ind]){
+                if(backtrack(board,word,x,y,ind+1)){
+                    return true;
+                }
+            }
+        }
+        board[row][col] = old;
+        return false;
+    }
+};

@@ -35,3 +35,37 @@ public:
         return dummy.next;
     }
 };
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+// refined
+// beat 37%
+// time: O(N)
+// space: O(1)
+class Solution {
+public:
+    ListNode* partition(ListNode* head, int x) {
+        ListNode dummy1(-1), dummy2(-1);
+        dummy1.next = head;
+        ListNode* pre = &dummy1, *cur = head, *new_cur = &dummy2;
+        while(cur!=NULL){
+            if(cur->val<x){
+                new_cur->next = cur;
+                new_cur = new_cur->next;
+                pre->next = cur->next;
+                cur = pre->next;
+            } else {
+                pre = cur;
+                cur = cur->next;
+            }
+        }
+        new_cur->next = dummy1.next;
+        return dummy2.next;
+    }
+};
