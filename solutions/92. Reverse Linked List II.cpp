@@ -7,6 +7,17 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
+// refined
+// time: O(N)
+// space: O(1)
+/*
+1. get to the new fake head2
+2. do the head insert n-m-1 times
+3. return real head
+
+
+ */
 class Solution {
 public:
     ListNode* reverseBetween(ListNode* head, int m, int n) {
