@@ -8,35 +8,26 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+// refined
+// beat 99%
+// time: O(N)
+// space: O(H)
 class Solution {
 public:
     vector<vector<int>> pathSum(TreeNode* root, int sum) {
-        valid(root,sum,tmp);
-        return result;
-    }
-    void valid(TreeNode* root, int sum, vector<int>& tmp){
-        if(!root) {
-            return;
-        }
-        tmp.push_back(root->val);
-        if(root->left==nullptr && root->right==nullptr){
-            if(sum==root->val){
-                // tmp.push_back(root->val);
-                result.push_back(tmp);
-                tmp.pop_back();
-                return ;
-            }
-            else{
-                tmp.pop_back();
-                return ;
-            }
-        }
-        valid(root->left,sum-root->val,tmp); 
-        valid(root->right,sum-root->val,tmp);
-        tmp.pop_back();
-        
+        vector<vector<int> > paths;
+        vector<int> path;
+        findPaths(root, sum, path, paths);
+        return paths;  
     }
 private:
-    vector<int> tmp;
-    vector<vector<int>> result;
+    void findPaths(TreeNode* node, int sum, vector<int>& path, vector<vector<int> >& paths) {
+        if (!node) return;
+        path.push_back(node -> val);
+        if (!(node -> left) && !(node -> right) && sum == node -> val)
+            paths.push_back(path);
+        findPaths(node -> left, sum - node -> val, path, paths);
+        findPaths(node -> right, sum - node -> val, path, paths);
+        path.pop_back();
+    }
 };

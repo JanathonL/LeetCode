@@ -40,3 +40,36 @@ public:
     }
     
 };
+
+// refined
+// beat: 9%
+// time: O(n^2) ?? time: O(NlogN)
+// space: O(N)
+class Solution {
+public:
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        int cur = postorder.size()-1;
+        TreeNode* root = build(0,postorder.size()-1,cur,postorder,inorder);
+        return root;
+    }
+    TreeNode* build(int low, int high,int& cur, vector<int> postorder, vector<int> inorder){
+        TreeNode* root = nullptr;
+        if(cur>=postorder.size()) return nullptr;
+        if(high == low){
+            TreeNode* root = new TreeNode(postorder[cur--]);
+            return root;
+        }
+        if(high<low) return nullptr;
+        int ind = -1;
+        for(int i = low;i<=high;i++){
+            if(inorder[i]==postorder[cur]){
+                ind = i;
+                break;
+            }
+        }
+        root = new TreeNode(postorder[cur--]);
+        root->right = build(ind+1,high,cur,postorder,inorder);
+        root->left = build(low,ind-1,cur,postorder,inorder);
+        return root;
+    }
+};

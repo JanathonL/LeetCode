@@ -16,6 +16,9 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+// refined
+// time: O(NlogN)
+// space: O(H)
 class Solution {
 public:
     TreeNode* sortedListToBST(ListNode* head) {

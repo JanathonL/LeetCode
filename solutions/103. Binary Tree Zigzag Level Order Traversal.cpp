@@ -14,6 +14,7 @@
 8 min
 time: O(n)
 space: O(n)
+refined
 */
 class Solution {
 public:
