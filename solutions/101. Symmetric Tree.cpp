@@ -23,6 +23,9 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+// refined
+// time: O(N)
+// space: O(H)
 class Solution {
 public:
     bool isSymmetric(TreeNode* root) {

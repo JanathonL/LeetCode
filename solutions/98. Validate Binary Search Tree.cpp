@@ -14,6 +14,8 @@
 time: O(N)
 space: O(H)
 */
+// iterative
+// refined
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
@@ -38,5 +40,38 @@ public:
             }
         }
         return true;
+    }
+};
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+// recursive
+// refined
+// time: O(N)
+// space: O(H)
+class Solution {
+public:
+    TreeNode* prev = NULL;
+    bool isValidBST(TreeNode* root) {
+        if(root==NULL) return true;
+        bool res = isValidBST(root->left);
+        if(!res) return false;
+        if(prev==NULL){
+            prev = root;
+        } else {
+            if(root->val <= prev->val){
+                return false;
+            }
+            prev = root;
+        }
+        res = isValidBST(root->right);
+        return res;
     }
 };
