@@ -1,37 +1,39 @@
 207. Course Schedule
+// refined
+// beat 46.52%
+// time: O(N)
+// space: O(N)
 class Solution {
 public:
-    bool canFinish(int numCourses, vector<pair<int, int>>& pre) {
-        int cnt = pre.size();
-        if(cnt==0) return true;
-        vector<int> indegree(numCourses,0);
-        vector<vector<int>> after(numCourses,vector<int>());
-        for(int i=0;i<pre.size();i++){
-            indegree[pre[i].second]++;
-            after[pre[i].first].push_back(pre[i].second);
-            // cout<<pre[i].second<<endl;
+    bool canFinish(int numCourses, vector<pair<int, int>>& pres) {
+        unordered_map<int,int> indeg;
+        unordered_map<int,vector<int>> neighbs;
+        for(int i=0;i<numCourses;i++){
+            indeg[i] = 0;
         }
-        stack<int> s;
-        for(int i=0;i<indegree.size();i++){
-            if(0==indegree[i]) s.push(i);
+        for(int i=0;i<pres.size();i++){
+            pair<int,int> pre = pres[i];
+            indeg[pre.first]++;
+            neighbs[pre.second].push_back(pre.first);
         }
-        while(!s.empty()){
-            int i = s.top();
-            s.pop();
-            for(auto w:after[i]){
-                // cout<<w<<endl;
-                cnt--;
-                indegree[w]--;
-                if(0==indegree[w]){
-                    s.push(w);
+        queue<int> que;
+        for(auto item:indeg){
+            if(item.second==0){
+                que.push(item.first);
+            }
+        }
+        int cnt = 0;
+        while(!que.empty()){
+            int cur = que.front();
+            que.pop();
+            cnt ++;
+            for(auto nei:neighbs[cur]){
+                indeg[nei]--;
+                if(indeg[nei]==0){
+                    que.push(nei);
                 }
             }
         }
-        // cout<<cnt<<endl;
-        if(0==cnt){
-            return true;
-        }
-        return false;
-        
+        return cnt==numCourses;
     }
 };

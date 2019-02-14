@@ -1,4 +1,9 @@
 366. Find Leaves of Binary Tree
+// refined
+// beat 63%
+// time: O(N)
+// space: O(H)
+
 class Solution {
 public:
     vector<vector<int>> findLeaves(TreeNode* root) {
