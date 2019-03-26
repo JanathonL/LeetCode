@@ -18,19 +18,6 @@ space: O(h)
 */
 class Solution {
 public:
-    //     void flatten(TreeNode* root) {
-//         if(root == NULL){
-//             return ;
-//         }
-        
-//         flatten(root->right); //test
-//         flatten(root->left);
-        
-//         root->right = prev;
-//         root->left = NULL;
-        
-//         prev = root;
-//     }
     void flatten(TreeNode* root) {
         if(!root) {
             // cout<<"test"<<endl;
@@ -46,5 +33,42 @@ public:
         }
         // cout<<left->val<<endl;
         root->right = right;
+    }
+};
+
+
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+
+// refined
+// time: O(NlogN)   ???
+// space: O(H)
+class Solution {
+public:
+    void flatten(TreeNode* root) {
+        if(root==NULL) return;
+        flatten(root->left);
+        flatten(root->right);
+        if(root->left&&root->right){
+            TreeNode* right = root->right;
+            root->right = root->left;
+            root->left = NULL;
+            TreeNode* cur = root->right;
+            while(cur->right){
+                cur = cur->right;
+            }
+            cur->right = right;
+        } else if(root->left){
+            root->right = root->left;
+            root->left = NULL;
+        }
     }
 };

@@ -32,3 +32,30 @@ public:
 private:
     int sum;
 };
+
+
+// refined
+// beat 100%
+// time: O(N)
+// space: O(H)
+class Solution {
+public:
+    int sumNumbers(TreeNode* root) {
+        int sum = 0;
+        dfs(root, sum, 0);
+        return sum;
+    }
+    void dfs(TreeNode* root, int& sum, int cur){
+        if(root==NULL){
+            return;
+        }
+        cur = cur*10 + root->val;
+        if(root->left==NULL && root->right==NULL){
+            sum += cur;
+            return;
+        }
+        dfs(root->left, sum, cur);
+        dfs(root->right, sum, cur);
+        
+    }
+};

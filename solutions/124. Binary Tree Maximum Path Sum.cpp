@@ -9,6 +9,8 @@
  */
 /*
 bug free
+refined
+beat: 96%
 3min
 time: O(N)
 space: O(h)
