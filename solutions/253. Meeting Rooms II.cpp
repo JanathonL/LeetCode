@@ -24,6 +24,8 @@ public:
     
     9 min
     2 wrong
+    refined
+    beat 99%
     time: O(NlogN)
     space: O(N)
     */
@@ -39,10 +41,8 @@ public:
             Interval cur = intervals[i];  // 类型名是 Interval, 变量名是 intervals, 千万别弄错
             if(!pq.empty() && cur.start>=pq.top()){  // 要和面试官弄清楚 等于算不算 重叠
                 pq.pop();
-                pq.push(cur.end);
-            } else {
-                pq.push(cur.end);
-            }
+            } 
+            pq.push(cur.end);
         }
         return pq.size();
     }
