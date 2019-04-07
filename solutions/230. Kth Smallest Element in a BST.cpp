@@ -23,3 +23,55 @@ public:
         preOrder(root->right,result);
     }
 };
+
+// refined beat 81%
+// time: O(N)
+// space: O(H)
+class Solution {
+public:
+    int kthSmallest(TreeNode* root, int k) {
+        int res=0;
+        inOrder(root, k, res);
+        return res;
+    }
+    void inOrder(TreeNode* root, int& k, int& res){
+        if(root==NULL || k==0){
+            return;
+        }
+        inOrder(root->left, k, res);
+        if(k==1){
+            res = root->val;
+        }
+        k--;
+        inOrder(root->right, k, res);
+    }
+};
+
+// stack
+// refined 
+// time: O(N)
+// space: O(H)
+class Solution {
+public:
+    int kthSmallest(TreeNode* root, int k) {
+        stack<TreeNode*> stk;
+        TreeNode* cur = root;
+        int cnt = 0;
+        while(!stk.empty() || cur){
+            if(cur){
+                stk.push(cur);
+                cur = cur->left;
+            } else {
+                cur = stk.top();
+                stk.pop();
+                cnt++;
+                if(cnt == k){
+                    return cur->val;
+                }
+                cur = cur->right;
+            }
+        }
+        return cur->val;
+    }
+};
+
