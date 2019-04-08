@@ -7,6 +7,10 @@
  *  TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) {}
  * };
  */
+
+//refined
+// time: O(N)
+// space:O(H)
 class Solution {
 public:
     void connect(TreeLinkNode *root) {

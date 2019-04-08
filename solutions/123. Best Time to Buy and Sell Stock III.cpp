@@ -1,4 +1,10 @@
 123. Best Time to Buy and Sell Stock III
+
+// refined
+// beat:33.6%
+// 3 pass - solution
+// time: O(N)
+// space: O(N)
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -21,5 +27,24 @@ public:
             profit = max(profit,g[i]+f[i]);
         }
         return profit;
+    }
+};
+
+
+// refined
+// beat: 98%
+// time: O(N)
+// space: O(1)
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int b1 = INT_MIN, s1 = 0, b2 = INT_MIN, s2 = 0;
+        for (int p : prices) {
+            b1 = max(b1, -p);
+            s1 = max(s1, b1 + p);
+            b2 = max(b2, s1 - p);
+            s2 = max(s2, b2 + p);
+        }
+        return s2;
     }
 };
