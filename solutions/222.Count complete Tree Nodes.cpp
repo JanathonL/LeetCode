@@ -9,6 +9,9 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+// refined beat 100%
+// time O(logn)
+// space O(H)
 class Solution {
 public:
     int countNodes(TreeNode* root) {
