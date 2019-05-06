@@ -1,4 +1,7 @@
 394. Decode String
+// refined beat 100%
+// time: O(N)
+// space: O(1)
 class Solution {
 public:
     bool is_digit(char c){
