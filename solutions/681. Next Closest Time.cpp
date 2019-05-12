@@ -63,3 +63,45 @@ public:
         }
     }
 };
+
+// exhausted 
+// time: O(1)
+
+class Solution {
+public:
+    string nextClosestTime(string time) {
+        int cur = 0;
+        cur += (time[0]-'0')*10*60+(time[1]-'0')*60+(time[3]-'0')*10+(time[4]-'0');
+        unordered_set<int> dict;
+        for(char c:time){
+            if(c!=':'){
+                dict.insert(c-'0');
+            }
+        }
+        while(true){
+            cur = (cur+1)%(24*60);
+            vector<int> digits;
+            digits.push_back(cur/60/10);
+            digits.push_back(cur/60%10);
+            digits.push_back((cur%60)/10);
+            digits.push_back((cur%60)%10);
+            bool find = true;
+            for(int item:digits){
+                if(!dict.count(item)){
+                    find = false;
+                    break;
+                }
+            }
+            if(find){
+                string res;
+                for(int item:digits){
+                    res += item+'0';
+                    if(res.size()==2){
+                        res += ":";
+                    }
+                }
+                return res;
+            }
+        }
+    }
+};
